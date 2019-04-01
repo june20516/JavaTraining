@@ -190,5 +190,6 @@ public class HomeWork {
             }
             System.out.print("\n"); // 열 끝까지 가면 줄바꿈
         }
+        
     }
 }
