@@ -100,7 +100,8 @@ public class HomeWork {
 		
 		// 학점 출력하기
 		for(int num : nums) {
-			System.out.printf("%s의 국어점수는 %d, 영어점수는 %d, 수학점수는 %d이고, 최종 학점은 %c입니다.%n",names[num-1],krScores[num-1],enScores[num-1],mathScores[num-1],ratings[num-1]);
+			System.out.printf("%s의 국어점수는 %d, 영어점수는 %d, 수학점수는 %d이고, 최종 학점은 %c입니다.%n",
+					names[num-1],krScores[num-1],enScores[num-1],mathScores[num-1],ratings[num-1]);
 		}
 	}
 }
