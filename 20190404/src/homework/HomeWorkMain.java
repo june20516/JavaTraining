@@ -3,23 +3,23 @@ package homework;
 public class HomeWorkMain {
 	public static void main(String[] args) {
 
-		// 1 white space¸¦ ¾ø¾Öº¸ÀÚ
+		// 1 white spaceì œê±°
 		String hw1 = "        345       ";
 		System.out.println(hw1.trim());
 
 		String hw11 = "    3   4  5 ";
 		
 		
-		// 2 ±âÁØ ¹®ÀÚ·Î ºĞ¸®ÇØº¸ÀÚ
+		// 2 string ë‚˜ëˆ„ê¸°
 		
-		// 2-1 splitÀ¸·Î ¹è¿­À» »ç¿ëÇÑ ¹æ¹ı
-		String hw2 = "¹Ù³ª³ª:µş±â:¸Á°í:µÎ¸®¾È";
+		// 2-1 splitì„ ì‚¬ìš©
+		String hw2 = "ì‚¬ê³¼:ë°”ë‚˜ë‚˜:ë§ê³ :ë‘ë¦¬ì•ˆ";
 		String[] fruits = hw2.split(":");
 		for (String fruit : fruits) {
 			System.out.println(fruit);
 		}
 		
-		// 2-2 charAt°ú if¹®À» ÀÌ¿ëÇÑ ¹æ¹ı
+		// 2-2 charAtê³¼ ifì‚¬ìš©í•˜ê¸°
 		for(int idx=0; idx< hw2.length() ; idx++) {
 			if (hw2.charAt(idx) == ':') {
 				System.out.println();
@@ -30,19 +30,19 @@ public class HomeWorkMain {
 		System.out.println();
 		
 		
-		// 3 "°­³²±¸" ¸¦ Ã£°í ±× ÀÌÈÄ ¹®ÀÚ¸¦ Ãâ·ÂÇØº¸ÀÚ
-		String addr1 = "¼­¿ï½Ã °­³²±¸ »ï¼ºµ¿ 66-8";
-		String addr2 = "¼­¿ïÆ¯º°½Ã °­³²±¸ ¿ª»ïµ¿";
-		String addr3 = "¼­¿ï °­µ¿±¸ ¼º³»µ¿";
+		// 3 "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" ï¿½ï¿½ Ã£ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½ï¿½Øºï¿½ï¿½ï¿½
+		String addr1 = "ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¼ºï¿½ï¿½ 66-8";
+		String addr2 = "ï¿½ï¿½ï¿½ï¿½Æ¯ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ïµ¿";
+		String addr3 = "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
 		
 		String[] addrs = { addr1, addr2, addr3 };
-		String keyword = "°­³²±¸";
+		String keyword = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
 		String target = "";
 
 		for (String addr : addrs) {
 			int keyIdx = addr.indexOf(keyword);
 			if (keyIdx == -1) {
-				System.out.printf("%s°¡ ¾ø½À´Ï´Ù.", keyword);
+				System.out.printf("%sï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.", keyword);
 			} else {
 				target = addr.substring(keyIdx + keyword.length());
 				System.out.println(target);
