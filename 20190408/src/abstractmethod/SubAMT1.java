@@ -3,6 +3,7 @@ package abstractmethod;
 import abst.TestInterface;
 
 public class SubAMT1 extends AbstMethodTest implements TestInterface{
+	public String x;
 	@Override
 	public void m1() {
 		System.out.println("SubAMT1�� m1");
