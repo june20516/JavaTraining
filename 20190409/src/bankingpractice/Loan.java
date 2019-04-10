@@ -3,6 +3,52 @@ package bankingpractice;
 import java.util.Scanner;
 
 public class Loan {
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((accountNumberStr == null) ? 0 : accountNumberStr.hashCode());
+		result = prime * result + ((customerName == null) ? 0 : customerName.hashCode());
+		result = prime * result + interestRate;
+		result = prime * result + (int) (monthlyPayment ^ (monthlyPayment >>> 32));
+		result = prime * result + period;
+		result = prime * result + (int) (principal ^ (principal >>> 32));
+		result = prime * result + (int) (totalAmount ^ (totalAmount >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Loan other = (Loan) obj;
+		if (accountNumberStr == null) {
+			if (other.accountNumberStr != null)
+				return false;
+		} else if (!accountNumberStr.equals(other.accountNumberStr))
+			return false;
+		if (customerName == null) {
+			if (other.customerName != null)
+				return false;
+		} else if (!customerName.equals(other.customerName))
+			return false;
+		if (interestRate != other.interestRate)
+			return false;
+		if (monthlyPayment != other.monthlyPayment)
+			return false;
+		if (period != other.period)
+			return false;
+		if (principal != other.principal)
+			return false;
+		if (totalAmount != other.totalAmount)
+			return false;
+		return true;
+	}
+
 	// 계좌번호
 	private String accountNumberStr;
 	// 계좌 count
