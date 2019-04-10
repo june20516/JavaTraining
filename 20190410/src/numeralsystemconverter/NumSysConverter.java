@@ -4,22 +4,30 @@ public class NumSysConverter {
 	StringBuffer binaryNum;
 	
 	public StringBuffer toDecimal(StringBuffer binaryNum) {
-		int resultNum = 0;
+		int calcInt = 0;
 		for(int RIndex = 0; RIndex < binaryNum.length(); RIndex++) {
 			int binaryDigit = binaryNum.charAt(binaryNum.length()-1-RIndex);
 			if (binaryDigit == '1') {
-				resultNum += (int)Math.pow(2, RIndex);
+				calcInt += (int)Math.pow(2, RIndex);
 			}
 		}
-		return new StringBuffer(resultNum);
+
+
+		return new StringBuffer().append(calcInt);
 	}
 	
-	public StringBuffer toBinary(StringBuffer Num) {
-		StringBuffer binaryNum = new StringBuffer("");
-		int a = 2444;
-		
-//		for(int i = 0;)
-		return null;
+	public StringBuffer toBinary(StringBuffer num) {
+		StringBuffer calcBuffer = new StringBuffer("");
+		StringBuffer resultNum = new StringBuffer("");
+		int intNum = Integer.parseInt(new String(num));
+		while(intNum > 0) {
+			calcBuffer.append(intNum%2);
+			intNum /= 2;
+		}
+		for (int idx = calcBuffer.length()-1; idx >= 0; idx--) {
+			resultNum.append(calcBuffer.charAt(idx));
+		}
+		return resultNum;
 	}
 	
 //	public StringBuffer toOctal(StringBuffer Num) {
