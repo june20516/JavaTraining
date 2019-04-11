@@ -73,7 +73,7 @@ public class NumberConverter {
 		System.out.printf("2진법으로 %s \n", fromDecimal(middleNum,2));
 		//fromdecimal(8)
 		System.out.printf("8진법으로 %s \n", fromDecimal(middleNum,8));
-		//frimdecimal(16)
+		//frimdecimal(10)
 		System.out.printf("10진법으로 %s  입니다. \n", fromDecimal(middleNum,10));
 	}
 	
