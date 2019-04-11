@@ -1,4 +1,4 @@
-package numeralsystemconverter;
+package failed.numeralsystemconverter;
 
 public class NumSysConverter {
 	StringBuffer binaryNum;
@@ -15,26 +15,23 @@ public class NumSysConverter {
 	}
 	
 	public StringBuffer toBinary(StringBuffer num) {
-		StringBuffer calcBuffer = new StringBuffer("");
 		StringBuffer resultNum = new StringBuffer("");
 		int intNum = Integer.parseInt(new String(num));
 		while(intNum > 0) {
-			calcBuffer.append(intNum%2);
+			resultNum.insert(0,intNum%2);
 			intNum /= 2;
-		}
-		for (int idx = calcBuffer.length()-1; idx >= 0; idx--) {
-			resultNum.append(calcBuffer.charAt(idx));
 		}
 		return resultNum;
 	}
 	
 	public StringBuffer toOctal(StringBuffer Num) {
 		StringBuffer binaryNum = this.toBinary(Num);
-		StringBuffer partialBinary;
+		String partialBinary;
 		StringBuffer resultStr = new StringBuffer("");
-		partialBinary = binaryNum.delete(binaryNum.length()-4, binaryNum.length()-1);
-		resultStr.insert(resultStr.length(), this.toDecimal(partialBinary));
-		System.out.println(resultStr);
+		partialBinary = binaryNum.substring(binaryNum.length()-3);
+		binaryNum = binaryNum.delete(binaryNum.length()-3, binaryNum.length());
+		resultStr.insert(0, this.toDecimal(new StringBuffer(partialBinary)));
+		System.out.print(resultStr);
 		return resultStr;
 	}
 }
