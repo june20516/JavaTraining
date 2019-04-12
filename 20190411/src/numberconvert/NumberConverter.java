@@ -33,10 +33,6 @@ public class NumberConverter {
 		return new StringBuffer().append(calcInt);
 	}
 	
-	private int inputSys() {
-		return keyIn.nextInt();
-	}
-	
 	private void calcFrom(int sysNum, StringBuffer inputNum) {
 		int middleNum = 0;
 		if (sysNum != 10) {
