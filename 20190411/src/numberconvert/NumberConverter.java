@@ -36,7 +36,7 @@ public class NumberConverter {
 	private void calcFrom(int sysNum, StringBuffer inputNum) {
 		int middleNum = 0;
 		if (sysNum != 10) {
-			middleNum = Integer.parseInt(toDecimal(inputNum,2).toString());
+			middleNum = Integer.parseInt(toDecimal(inputNum,sysNum).toString());
 		} else {
 			middleNum = Integer.parseInt(inputNum.toString());
 		}
