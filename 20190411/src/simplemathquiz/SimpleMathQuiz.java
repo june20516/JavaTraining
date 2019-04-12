@@ -2,8 +2,6 @@ package simplemathquiz;
 
 import java.awt.Button;
 import java.awt.Color;
-import java.awt.GridLayout;
-import java.awt.Label;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,19 +10,20 @@ import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class SimpleMathQuiz extends JFrame implements ActionListener {
 
 	String[] operators = { "+", "-", "*", "/" };
-	Label leftOperandLabel = new Label();
-	Label rightOperandLabel = new Label();
-	final Label equalLabel = new Label("=");
-	Label operatorLabel = new Label();;
+	JLabel leftOperandLabel = new JLabel();
+	JLabel rightOperandLabel = new JLabel();
+	final JLabel equalLabel = new JLabel("=");
+	JLabel operatorLabel = new JLabel();;
 	Button submit = new Button("submit");
 	TextField answer = new TextField("답을 입력하세요");
-	Label resultLabel = new Label();;
+	JLabel resultLabel = new JLabel();
 	Button retry = new Button("retry");
 	int rightAnswer;
 
@@ -50,6 +49,7 @@ public class SimpleMathQuiz extends JFrame implements ActionListener {
 		leftOperandLabel.setText("" + lNum);
 		operatorLabel.setText(operator);
 		rightOperandLabel.setText("" + rNum);
+		resultLabel.setText("");
 	}
 
 	public void init() {
@@ -100,15 +100,22 @@ public class SimpleMathQuiz extends JFrame implements ActionListener {
 			}
 		});
 
-		setLayout(new GridLayout(0, 8));
-		this.add(leftOperandLabel);
-		this.add(operatorLabel);
-		this.add(rightOperandLabel);
-		this.add(equalLabel);
-		this.add(answer);
-		this.add(submit);
-		this.add(resultLabel);
-		this.add(retry);
+		
+//		setLayout(new GridLayout(0, 8));
+		JPanel centerPanel = new JPanel();
+		JPanel southPanel = new JPanel();
+		JPanel eastPanel = new JPanel();
+		centerPanel.add(leftOperandLabel);
+		centerPanel.add(operatorLabel);
+		centerPanel.add(rightOperandLabel);
+		centerPanel.add(equalLabel);
+		centerPanel.add(resultLabel);
+		southPanel.add(answer);
+		southPanel.add(submit);
+		eastPanel.add(retry);
+		this.add("Center",centerPanel);
+		this.add("South",southPanel);
+		this.add("East",eastPanel);
 	}
 
 	public int calcByOperator(int left, int right, String operator) {
