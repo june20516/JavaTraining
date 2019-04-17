@@ -1,8 +1,8 @@
 package use;
 
-import middle.PersTestScoreInfo;
-import middle.StudPersInfo;
-import middle.TestScoreInfo;
+import middle.PersonalScoreInfo;
+import middle.StudentInfo;
+import middle.ScoreInfo;
 
 public class StartClass {
 
@@ -15,21 +15,21 @@ public class StartClass {
 		 * System.out.println(in); }
 		 */
 		
-		StudPersInfo info = 
-				new StudPersInfo(
+		StudentInfo info = 
+				new StudentInfo(
 						"2019001", "김말자",
 						"010-1234-5678", "aaa@aa.aa");
-		StudPersInfo stut2 = new StudPersInfo(
+		StudentInfo stut2 = new StudentInfo(
 				"2019001", "김말자",
 				"010-1234-5678", "aaa@aa.aa");
 		
 		if(info.equals(stut2))System.out.println("동일한객체");
 		else System.out.println("다른객체");
 		
-		TestScoreInfo scoreInfo = 
-				new TestScoreInfo(90, 90, 90, 90);
+		ScoreInfo scoreInfo = 
+				new ScoreInfo(90, 90, 90, 90);
 		
-		PersTestScoreInfo  studentTest = new PersTestScoreInfo(info, scoreInfo);
+		PersonalScoreInfo  studentTest = new PersonalScoreInfo(info, scoreInfo);
 		
 		System.out.println(studentTest.toString());
 		

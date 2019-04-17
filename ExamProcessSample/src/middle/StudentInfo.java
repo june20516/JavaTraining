@@ -1,61 +1,54 @@
 package middle;
 
-public class StudPersInfo {
+public class StudentInfo {
 	private String id;
 	private String name;
 	private String tel;
 	private String email;
 
-	/**
-	 * 
-	 */
-	public StudPersInfo() {
+	//constructor
+	public StudentInfo() {
 	}
-
-	public StudPersInfo(String id, String name, String tel, String email) {
+	public StudentInfo(String id, String name, String tel, String email) {
 		this.id = id;
 		this.name = name;
 		this.tel = tel;
 		this.email = email;
 	}
 
+	//getter
 	public String getId() {
 		return id;
 	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
 	public String getName() {
 		return name;
 	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public String getTel() {
 		return tel;
 	}
-
-	public void setTel(String tel) {
-		this.tel = tel;
-	}
-
 	public String getEmail() {
 		return email;
 	}
-
+	
+	//setter
+	public void setId(String id) {
+		this.id = id;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 
 	@Override
 	public String toString() {
 		return String.format("StudPersInfo [id=%s, name=%s, tel=%s, email=%s]", id, name, tel, email);
 	}
-
 	@Override
 	public int hashCode() {
 		System.out.println("hash");
@@ -67,7 +60,6 @@ public class StudPersInfo {
 		result = prime * result + ((tel == null) ? 0 : tel.hashCode());
 		return result;
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -76,7 +68,7 @@ public class StudPersInfo {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		StudPersInfo other = (StudPersInfo) obj;
+		StudentInfo other = (StudentInfo) obj;
 
 		if (id == null) {
 			if (other.id != null) {
@@ -85,26 +77,20 @@ public class StudPersInfo {
 		} else if (!id.equals(other.id)) {
 			return false;
 		}
-		// System.out.println(" id.equals(other.id) true인경우 다음 문장 실행");
 		if (name == null) {
 			if (other.name != null)
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		// System.out.println(" name.equals(other.name) true인경우 다음 문장 실행");
 		if (tel == null) {
 			if (other.tel != null)
 				return false;
-
 		} else if (!tel.equals(other.tel))
 			return false;
-		// System.out.println(" tel.equals(other.tel) true인경우 다음 문장 실행");
 		if (email == null && other.email != null) {
 			return false;
 		} else if (!email.equals(other.email))
 			return false;
-		// System.out.println(" email.equals(other.email) true인경우 다음 문장 실행");
-		// 다 일치한다 그래서 true리턴
 		return true;
 	}
 
