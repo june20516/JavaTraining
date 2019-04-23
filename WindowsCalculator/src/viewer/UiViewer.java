@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import calculator.CalculatorLogic;
+
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -14,43 +17,62 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Queue;
 import java.awt.ComponentOrientation;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 import java.awt.Font;
 
 public class UiViewer extends JFrame {
+	private CalculatorLogic logic = new CalculatorLogic();
+	
 	private StringBuffer tempStr = new StringBuffer("");
+	private List<String> inputedSrcList = new ArrayList<String>();
 
 	private JPanel contentPane;
-	private JTextArea consoleArea = new JTextArea();
+	private JTextField consoleArea = new JTextField();
 	
 	private DigitBtnHandler digitBtnHandler = new DigitBtnHandler();
-		
-	
 	class DigitBtnHandler implements ActionListener{
-		
 		MouseAdapter mouseClickListener = new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
-				String clickedDigit = ((JButton)(e.getSource())).getText();
+			public void mouseReleased(MouseEvent e) {
+//				public void mouseClicked(MouseEvent e) {
+				String clickedDigit = ((JButton) (e.getSource())).getText();
 				tempStr.append(clickedDigit);
-				System.out.println(tempStr);
-				consoleArea.append(clickedDigit);
+//				consoleArea.append(clickedDigit);	// wrong move at entering dot
+				consoleArea.setText(new String(tempStr));
+				System.out.println(new String(tempStr));
 			}
 		};
-		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			String clickedDigit = ((JButton)(e.getSource())).getText();
+			String clickedDigit = ((JButton) (e.getSource())).getText();
 			tempStr.append(clickedDigit);
 			System.out.println(tempStr);
-			consoleArea.append(clickedDigit);
+//			consoleArea.append(clickedDigit);	// wrong move at entering dot
+			consoleArea.setText(new String(tempStr));
 		}
-		
-		
-		
 	}
-
+	
+	private OptBtnHandler optBtnHandler = new OptBtnHandler();
+	class OptBtnHandler extends MouseAdapter{
+		@Override
+		public void mouseReleased(MouseEvent e) {
+//			public void mouseClicked(MouseEvent e) {
+			String clickedOpt = ((JButton) (e.getSource())).getText();
+			inputedSrcList.add(""+tempStr);
+			System.out.println(inputedSrcList.size());
+			tempStr = new StringBuffer("");
+			inputedSrcList.add(clickedOpt);
+			System.out.println(inputedSrcList.size());
+		}
+	}
+	
 	/**
 	 * Launch the application.
 	 */
@@ -78,6 +100,7 @@ public class UiViewer extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
+		consoleArea.setEditable(false);
 		
 		consoleArea.setFont(new Font("Lucida Grande", Font.PLAIN, 45));
 		consoleArea.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
@@ -94,25 +117,63 @@ public class UiViewer extends JFrame {
 		
 		JButton plusBtn = new JButton("+");
 		optPane.add(plusBtn);
+		plusBtn.addMouseListener(optBtnHandler);
 		
 		JButton minusBtn = new JButton("−");
 		optPane.add(minusBtn);
+		minusBtn.addMouseListener(optBtnHandler);
 		
 		JButton multBtn = new JButton("×");
 		optPane.add(multBtn);
+		multBtn.addMouseListener(optBtnHandler);
 		
 		JButton divBtn = new JButton("÷");
 		optPane.add(divBtn);
+		divBtn.addMouseListener(optBtnHandler);
+
 		
 		JButton rootBtn = new JButton("√");
 		optPane.add(rootBtn);
+		rootBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+//				double calculatedDouble = logic.squarRoot(Double.parseDouble(""+tempStr));
+//				tempStr = "" + calculatedDouble;
+				consoleArea.setText(new String(tempStr));
+				System.out.println(new String(tempStr));
+			}
+//			@Override
+//			public void mouseClicked(MouseEvent e) {
+//				double calculatedDouble = logic.squarRoot(Double.parseDouble(""+tempStr));
+////				tempStr = "" + calculatedDouble;
+//				consoleArea.setText(new String(tempStr));
+//				System.out.println(new String(tempStr));
+//			}
+		});
 		
 		JLabel opsLabel = new JLabel("  ");
 		optPane.add(opsLabel);
 		
 		JButton excBtn = new JButton("=");
 		optPane.add(excBtn);
-		
+		excBtn.addMouseListener(new MouseAdapter() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+//				logic.setSrc(inputedSrcList);
+//				logic.calcBinaryOperation();
+//				consoleArea.setText(logic.getResultStr());
+//				tempStr = new StringBuffer(consoleArea.getText());
+			}
+
+//			@Override
+//			public void mouseClicked(MouseEvent e) {
+//				logic.setSrc(inputedSrcList);
+//				logic.calcBinaryOperation();
+//				consoleArea.setText(logic.getResultStr());
+//				tempStr = new StringBuffer(consoleArea.getText());
+//			}
+		});
 		JPanel digitPane = new JPanel();
 		inputPane.add(digitPane, BorderLayout.CENTER);
 		digitPane.setLayout(new GridLayout(4, 3, 0, 0));
