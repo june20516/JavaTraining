@@ -1,13 +1,21 @@
 package calculator;
 
+import java.util.Stack;
+
 public class CalTest {
 
 	public static void main(String[] args) {
 		
-		String a = "49380we123";
+		double a = 12.453432;
 		
-		System.out.println(a.contains("4"));
+		System.out.println(String.format("%s", a));
 
+		Stack<String> stackTst = new Stack<String>();
+		
+		System.out.println(stackTst);
+		
+		
+		
 	}
 
 }
